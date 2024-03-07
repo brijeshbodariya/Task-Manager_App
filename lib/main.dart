@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:task_manager/data/datasources/task_datasource.dart';
 import 'package:task_manager/data/repository_impl/task_repository_impl.dart';
@@ -12,6 +13,7 @@ import 'domain/usecases/fetching_usecase.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
   final TaskDataSource taskDataSource = TaskDataSource();
   await taskDataSource.initDatabase();
   final TaskRepository taskRepository = TaskRepositoryImpl(taskDataSource);
